@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>EcoTrace Pro | Carbon Footprint Calculator</title>
+
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+
+    <!-- Chart JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- ========================================= -->
+    <!-- Background -->
+    <!-- ========================================= -->
+
+    <div class="bg1"></div>
+    <div class="bg2"></div>
+    <div class="bg3"></div>
+
+    <!-- ========================================= -->
+    <!-- Navigation -->
+    <!-- ========================================= -->
+
+    <nav>
+        <div class="logo">
+            <i class="fa-solid fa-earth-americas"></i>
+            <span>EcoTrace Pro</span>
+        </div>
+        <ul>
+            <li><a href="#">Home</a></li>
+         <li><a href="#calculator">Calculator</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#history">History</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- ========================================= -->
+    <!-- Hero -->
+    <!-- ========================================= -->
+
+    <section class="hero">
+        <div class="hero-left">
+            <h1>
+                Calculate Your
+                <span>Carbon Footprint</span>
+                In Seconds
+            </h1>
+
+            <p>
+                Measure your environmental impact using AI-powered prediction.
+                Analyze electricity usage, transportation,
+                food habits and waste generation.
+                Receive personalized sustainability recommendations.
+            </p>
+
+            <button id="scrollBtn">
+                Start Calculation
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+
+       <div class="hero-right">
+    <div class="planet">
+        <img src="/static/Earth.png" alt="Profile Image" class="planet-img">
+    </div>
+</div>
+
+    </section>
+
+    <!-- ========================================= -->
+    <!-- Statistics -->
+    <!-- ========================================= -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+
+            <h2 id="usersCounter">
+
+                0
+
+            </h2>
+
+            <p>
+
+                Users Calculated
+
+            </p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h2 id="treesCounter">
+
+                0
+
+            </h2>
+
+            <p>
+
+                Trees Saved
+
+            </p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h2 id="carbonCounter">
+
+                0
+
+            </h2>
+
+            <p>
+
+                Kg CO₂ Reduced
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ========================================= -->
+    <!-- Calculator -->
+    <!-- ========================================= -->
+
+    <section
+        id="calculator"
+        class="calculator">
+
+        <div class="section-title">
+
+            <h2>
+
+                Carbon Footprint Calculator
+
+            </h2>
+
+            <p>
+
+                Fill the details below
+
+            </p>
+
+        </div>
+
+        <div class="glass-card">
+
+            <div class="row">
+
+                <div class="input-box">
+
+                    <label>
+
+                        Full Name
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name">
+
+                </div>
+
+                <div class="input-box">
+
+                    <label>
+
+                        Travel Distance (KM)
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="travel"
+                        placeholder="Example : 250">
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="input-box">
+
+                    <label>
+
+                        Electricity Usage (kWh)
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="electricity"
+                        placeholder="Example : 180">
+
+                </div>
+
+                <div class="input-box">
+
+                    <label>
+
+                        Food Consumption Score
+
+                    </label>
+
+                    <select id="food">
+
+                        <option value="1">
+                            Vegan
+                        </option>
+
+                        <option value="3">
+                            Vegetarian
+                        </option>
+
+                        <option value="6">
+                            Mixed Diet
+                        </option>
+
+                        <option value="10">
+                            Heavy Meat Consumption
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="input-box">
+
+                    <label>
+
+                        Waste Produced (KG)
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="waste"
+                        placeholder="Example : 12">
+
+                </div>
+
+                <div class="input-box">
+
+                    <label>
+
+                        Lifestyle
+
+                    </label>
+
+                    <select id="lifestyle">
+
+                        <option>
+
+                            Eco Friendly
+
+                        </option>
+
+                        <option>
+
+                            Average
+
+                        </option>
+
+                        <option>
+
+                            Luxury
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="button-group">
+
+                <button
+                    id="calculateBtn">
+
+                    <i class="fa-solid fa-leaf"></i>
+
+                    Calculate
+
+                </button>
+
+                <button
+                    id="resetBtn">
+
+                    <i class="fa-solid fa-rotate-left"></i>
+
+                    Reset
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+        <!-- ========================================= -->
+    <!-- Results Dashboard -->
+    <!-- ========================================= -->
+
+    <section
+        id="dashboard"
+        class="dashboard">
+
+        <div class="section-title">
+
+            <h2>
+
+                Your Carbon Dashboard
+
+            </h2>
+
+            <p>
+
+                AI-powered analysis of your environmental impact
+
+            </p>
+
+        </div>
+
+        <div class="dashboard-grid">
+
+            <!-- Carbon Score -->
+
+            <div class="dashboard-card result-card">
+
+                <h3>
+
+                    <i class="fa-solid fa-globe"></i>
+
+                    Carbon Emission
+
+                </h3>
+
+                <div
+                    id="carbonValue"
+                    class="big-number">
+
+                    0
+
+                </div>
+
+                <span class="unit">
+
+                    kg CO₂
+
+                </span>
+
+            </div>
+
+            <!-- Rating -->
+
+            <div class="dashboard-card">
+
+                <h3>
+
+                    <i class="fa-solid fa-award"></i>
+
+                    Carbon Rating
+
+                </h3>
+
+                <div
+                    id="rating"
+                    class="rating">
+
+                    Waiting...
+
+                </div>
+
+            </div>
+
+            <!-- Progress -->
+
+            <div class="dashboard-card">
+
+                <h3>
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    Sustainability Score
+
+                </h3>
+
+                <div class="progress-container">
+
+                    <div
+                        id="progressBar"
+                        class="progress-bar">
+
+                    </div>
+
+                </div>
+
+                <div
+                    id="scoreText">
+
+                    0%
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ========================================= -->
+    <!-- Analytics -->
+    <!-- ========================================= -->
+
+    <section class="analytics">
+
+        <div class="analytics-left">
+
+            <canvas
+                id="carbonChart">
+
+            </canvas>
+
+        </div>
+
+        <div class="analytics-right">
+
+            <canvas
+                id="comparisonChart">
+
+            </canvas>
+
+        </div>
+
+    </section>
+
+    <!-- ========================================= -->
+    <!-- Eco Tips -->
+    <!-- ========================================= -->
+
+    <section class="tips-section">
+
+        <div class="section-title">
+
+            <h2>
+
+                Personalized Eco Tips
+
+            </h2>
+
+        </div>
+
+        <div
+            id="tipsContainer"
+            class="tips-grid">
+
+            <div class="tip-card">
+
+                <i class="fa-solid fa-seedling"></i>
+
+                <p>
+
+                    Calculate your footprint to receive AI recommendations.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ========================================= -->
+    <!-- Achievements -->
+    <!-- ========================================= -->
+
+    <section class="achievement-section">
+
+        <div class="section-title">
+
+            <h2>
+
+                Eco Achievements
+
+            </h2>
+
+        </div>
+
+        <div class="achievement-grid">
+
+            <div class="achievement-card">
+
+                <i class="fa-solid fa-tree"></i>
+
+                <h3>
+
+                    Green Starter
+
+                </h3>
+
+                <p>
+
+                    Complete your first carbon calculation.
+
+                </p>
+
+            </div>
+
+            <div class="achievement-card">
+
+                <i class="fa-solid fa-bicycle"></i>
+
+                <h3>
+
+                    Eco Traveler
+
+                </h3>
+
+                <p>
+
+                    Reduce travel emissions.
+
+                </p>
+
+            </div>
+
+            <div class="achievement-card">
+
+                <i class="fa-solid fa-recycle"></i>
+
+                <h3>
+
+                    Recycling Hero
+
+                </h3>
+
+                <p>
+
+                    Reduce household waste.
+
+                </p>
+
+            </div>
+
+            <div class="achievement-card">
+
+                <i class="fa-solid fa-bolt"></i>
+
+                <h3>
+
+                    Energy Saver
+
+                </h3>
+
+                <p>
+
+                    Lower electricity usage.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ========================================= -->
+    <!-- Report Section -->
+    <!-- ========================================= -->
+
+    <section class="report-section">
+
+        <div class="glass-card report-card">
+
+            <h2>
+
+                Download Carbon Report
+
+            </h2>
+
+            <p>
+
+                Save your latest environmental analysis.
+
+            </p>
+
+            <button
+                id="downloadBtn">
+
+                <i class="fa-solid fa-download"></i>
+
+                Download Report
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ========================================= -->
+    <!-- History -->
+    <!-- ========================================= -->
+
+    <section
+        id="history"
+        class="history-section">
+
+        <div class="section-title">
+
+            <h2>
+
+                Recent Calculations
+
+            </h2>
+
+        </div>
+
+        <div class="history-table">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Name</th>
+
+                        <th>Carbon</th>
+
+                        <th>Rating</th>
+
+                        <th>Date</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody
+                    id="historyTable">
+
+                    <tr>
+
+                        <td colspan="4">
+
+                            No records available.
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+    <!-- ========================================= -->
+    <!-- Features -->
+    <!-- ========================================= -->
+
+    <section class="features">
+
+        <div class="section-title">
+
+            <h2>
+
+                Why EcoTrace Pro?
+
+            </h2>
+
+        </div>
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-brain"></i>
+
+                <h3>
+
+                    AI Prediction
+
+                </h3>
+
+                <p>
+
+                    Machine Learning estimates your carbon footprint.
+
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-chart-pie"></i>
+
+                <h3>
+
+                    Smart Analytics
+
+                </h3>
+
+                <p>
+
+                    Visual insights with interactive charts.
+
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-database"></i>
+
+                <h3>
+
+                    History Storage
+
+                </h3>
+
+                <p>
+
+                    Every calculation is stored in SQLite.
+
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-leaf"></i>
+
+                <h3>
+
+                    Eco Suggestions
+
+                </h3>
+
+                <p>
+
+                    Personalized recommendations to reduce emissions.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+        <!-- ========================================= -->
+    <!-- Contact Section -->
+    <!-- ========================================= -->
+
+    <section class="contact-section">
+
+        <div class="section-title">
+
+            <h2>
+
+                Join the Green Movement
+
+            </h2>
+
+            <p>
+
+                Every small step towards sustainability makes a big difference.
+
+            </p>
+
+        </div>
+
+        <div class="contact-grid">
+
+            <div class="contact-card">
+
+                <i class="fa-solid fa-earth-asia"></i>
+
+                <h3>
+
+                    Save Earth
+
+                </h3>
+
+                <p>
+
+                    Reduce your carbon footprint and inspire others to live sustainably.
+
+                </p>
+
+            </div>
+
+            <div class="contact-card">
+
+                <i class="fa-solid fa-tree"></i>
+
+                <h3>
+
+                    Plant More Trees
+
+                </h3>
+
+                <p>
+
+                    Trees absorb CO₂ and help combat climate change.
+
+                </p>
+
+            </div>
+
+            <div class="contact-card">
+
+                <i class="fa-solid fa-water"></i>
+
+                <h3>
+
+                    Conserve Resources
+
+                </h3>
+
+                <p>
+
+                    Save electricity, water and fuel for a greener future.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ========================================= -->
+    <!-- Footer -->
+    <!-- ========================================= -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div class="footer-logo">
+
+                <i class="fa-solid fa-earth-americas"></i>
+
+                <h2>
+
+                    EcoTrace Pro
+
+                </h2>
+
+            </div>
+
+            <p>
+
+                AI Powered Carbon Footprint Calculator
+
+
+            </p>
+
+            <div class="social-icons">
+
+                <a href="#">
+
+                    <i class="fab fa-facebook-f"></i>
+
+                </a>
+
+                <a href="#">
+
+                    <i class="fab fa-instagram"></i>
+
+                </a>
+
+                <a href="#">
+
+                    <i class="fab fa-linkedin-in"></i>
+
+                </a>
+
+                <a href="#">
+
+                    <i class="fab fa-github"></i>
+
+                </a>
+
+            </div>
+
+            <hr>
+
+            <p class="copyright">
+
+                © 2026 EcoTrace Pro
+
+                <br>
+
+                Designed with ❤️ for a Sustainable Planet
+
+            </p>
+
+        </div>
+
+    </footer>
+
+    <!-- ========================================= -->
+    <!-- Back To Top -->
+    <!-- ========================================= -->
+
+    <button
+        id="topBtn"
+        title="Go to top">
+
+        <i class="fa-solid fa-arrow-up"></i>
+
+    </button>
+
+    <!-- ========================================= -->
+    <!-- Loading Screen -->
+    <!-- ========================================= -->
+
+    <div
+        id="loader"
+        class="loader-wrapper">
+
+        <div class="loader">
+
+            <div class="leaf">
+
+                🌿
+
+            </div>
+
+            <h2>
+
+                EcoTrace Pro
+
+            </h2>
+
+            <p>
+
+                Loading Dashboard...
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ========================================= -->
+    <!-- Toast Notification -->
+    <!-- ========================================= -->
+
+    <div
+        id="toast"
+        class="toast">
+
+        <i class="fa-solid fa-circle-check"></i>
+
+        <span
+            id="toastMessage">
+
+            Operation Successful
+
+        </span>
+
+    </div>
+
+    <!-- ========================================= -->
+    <!-- JavaScript -->
+    <!-- ========================================= -->
+
+    <script
+        src="{{ url_for('static', filename='script.js') }}">
+    </script>
+
+</body>
+
+</html>
