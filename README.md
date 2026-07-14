@@ -74,11 +74,11 @@ EcoTrace Pro is an advanced Carbon Footprint Calculator that helps users measure
 
 ### 📊 Dashboard
 
-<img src="screenshots/dashboard.png" width="100%">
+<img src="screenshots/Dashboard 1.png" width="100%">
 
 ### 🌱 Carbon Analysis
 
-<img src="screenshots/analysis.png" width="100%">
+<img src="screenshots/Dashboard 2.png" width="100%">
 
 ---
 
