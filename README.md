@@ -1,6 +1,9 @@
 # 🌍 EcoTrace Pro
 
 <div align="center">
+<div class="planet">
+        <img src="/static/Earth.png" alt="Profile Image" class="planet-img">
+    </div>
 
 ### ♻️ AI-Powered Carbon Footprint Calculator
 
